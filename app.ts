@@ -8,14 +8,16 @@ const { Octokit } = require("@octokit/rest");
 const OctoKitfetch = require("node-fetch");
 const Utils = require("./config/global-utils.ts")
 
-const octokit = new Octokit({ auth: process.env.GITHUB_TOKEN, request: {
-  fetch: OctoKitfetch,
-}, });
+const octokit = new Octokit({
+  auth: process.env.GITHUB_TOKEN, request: {
+    fetch: OctoKitfetch,
+  },
+});
 
 module.exports = (app) => {
   app.log("Yay! The app was loaded!");
 
-  const workflowName = ["Snyk Bot scan", "TruffleHog Bot scan","Bot scan"];
+  const workflowName = ["Snyk Bot scan", "TruffleHog Bot scan", "Bot scan"];
 
   app.on("issues.opened", async (context) => {
     app.log("Yay! The new issues opened!");
@@ -26,7 +28,7 @@ module.exports = (app) => {
 
   app.on(["pull_request.opened", "pull_request.reopened"], async (context) => {
     app.log.info("Yay!, The New Pull-Request is opened / reopened!");
-    
+
     const user = Utils.getCurrentUser(context);
     let truffleOutput = "",
       snykOutput = "";
@@ -72,7 +74,7 @@ module.exports = (app) => {
               if (
                 // (step.conclusion === "failure" ||
                 //   step.conclusion === "skipped") &&
-                  Utils.checkStringContains(step.name, "truffle") &&
+                Utils.checkStringContains(step.name, "truffle") &&
                 step.conclusion === "success" && conclusion === "success"
               ) {
                 // Retrieve the response of the failed step
@@ -89,7 +91,7 @@ module.exports = (app) => {
               } else if (conclusion === "failure" &&
                 (step.conclusion === "failure" ||
                   step.conclusion === "skipped") &&
-                  Utils.checkStringContains(step.name, "snyk") &&
+                Utils.checkStringContains(step.name, "snyk") &&
                 step.conclusion != "success"
               ) {
                 // Retrieve the response of the failed step
