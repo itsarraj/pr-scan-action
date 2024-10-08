@@ -54,10 +54,10 @@ module.exports = (app) => {
     app.log(`workflowRuns: ${workflowRuns}`);
 
     for (const run of workflowRuns) {
-      app.log(`run1: ${run.event}`);
+      app.log(`run1.event : ${run.event}`);
       // if (run.conclusion === "failure" && run.event === "pull_request_target") {
       if (run.event === "pull_request_target") {
-        app.log(`run2: ${run.event}`);
+        app.log(`run2.event : ${run.event}`);
         const jobsResponse = await octokit.rest.actions.listJobsForWorkflowRun({
           owner,
           repo,
@@ -101,11 +101,13 @@ module.exports = (app) => {
 
                 truffleOutput = Utils.parseLogOutput(truffleLogOutput, "truffle");
                 truffleOutput = truffleLogOutput;
-              } else if (conclusion === "failure" &&
-                (step.conclusion === "failure" ||
-                  step.conclusion === "skipped") &&
-                Utils.checkStringContains(step.name, "snyk") &&
-                step.conclusion != "success"
+                // } else if (conclusion === "failure" &&
+                //   (step.conclusion === "failure" ||
+                //     step.conclusion === "skipped") &&
+                //   Utils.checkStringContains(step.name, "snyk") &&
+                //   step.conclusion != "success"
+                // ) {
+              } else if (Utils.checkStringContains(step.name, "snyk")
               ) {
                 // Retrieve the response of the failed step
                 const logResponse =
