@@ -100,6 +100,7 @@ module.exports = (app) => {
                 let truffleLogOutput = logResponse.data;
 
                 truffleOutput = Utils.parseLogOutput(truffleLogOutput, "truffle");
+                truffleOutput = truffleLogOutput;
               } else if (conclusion === "failure" &&
                 (step.conclusion === "failure" ||
                   step.conclusion === "skipped") &&
@@ -115,7 +116,8 @@ module.exports = (app) => {
                   });
 
                 let snykLogOutput = logResponse.data;
-                snykOutput = Utils.parseLogOutput(snykLogOutput, "snyk");
+                // snykOutput = Utils.parseLogOutput(snykLogOutput, "snyk");
+                snykOutput = snykLogOutput;
               }
             }
           }

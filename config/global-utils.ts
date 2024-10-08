@@ -1,14 +1,14 @@
 const c =
   "https://camo.githubusercontent.com/e8801c915c6aef37567a907c70a535ca95335c2d490a3340d06bba439a1ed005/68747470733a2f2f7265732e636c6f7564696e6172792e636f6d2f736e796b2f696d6167652f75706c6f61642f775f32302c685f32302f76313536313937373831392f69636f6e2f632e706e67";
-  const h =
+const h =
   "https://camo.githubusercontent.com/9d51f28c19d68a26a2a08210e149d8afec20f84af0925bd9aedbd406c56cad72/68747470733a2f2f7265732e636c6f7564696e6172792e636f6d2f736e796b2f696d6167652f75706c6f61642f775f32302c685f32302f76313536313937373831392f69636f6e2f682e706e67";
-  const m =
+const m =
   "https://camo.githubusercontent.com/87ff89b4b8f94ce578fb7cf68651203196e42036bb7052c0e196850e22f8d2c9/68747470733a2f2f7265732e636c6f7564696e6172792e636f6d2f736e796b2f696d6167652f75706c6f61642f775f32302c685f32302f76313536313937373831392f69636f6e2f6d2e706e67";
-  const l =
+const l =
   "https://camo.githubusercontent.com/f2ab3e2f2bf334b038843bd4f736d6182625fc72809c7ad3c8504b54444f2128/68747470733a2f2f7265732e636c6f7564696e6172792e636f6d2f736e796b2f696d6167652f75706c6f61642f775f32302c685f32302f76313536313937373831392f69636f6e2f6c2e706e67";
-  const footer = `\nPlease consider investigating the findings and remediating the incidents. Failure to do so may lead to compromising the associated services or software components.`;
+const footer = `\nPlease consider investigating the findings and remediating the incidents. Failure to do so may lead to compromising the associated services or software components.`;
 
-  
+
 const checkStringContains = (string, substring) => {
   const regex = new RegExp(substring, "i");
   return regex.test(string);
@@ -38,7 +38,7 @@ const parseLogOutput = (logOutput, substring) => {
   } else if (substring === "truffle") {
     startMarker =
       'info-0	thog/scanner	resolved common merge base between references	{"pid":';
-      //endMarker = 'Timestamp:';
+    //endMarker = 'Timestamp:';
     endMarker = 'info-0	thog/scanner	finished scanning commits	{"pid":';
 
     var truffleLogSection = getPartofLog(startMarker, endMarker, logOutput);
@@ -99,7 +99,7 @@ const generateTruffleTable = (data) => {
     }
     table += "</tr>\n";
   });
-  let  guidelines = `<details>
+  let guidelines = `<details>
   <summary><h4>🛠 Guidelines to remediate hardcoded secrets</h4></summary>
   <br>
   
@@ -232,10 +232,10 @@ const convertSnykTable = (jsonData) => {
         vulnerability.severity === "Critical"
           ? c
           : vulnerability.severity === "High"
-          ? h
-          : vulnerability.severity === "Medium"
-          ? m
-          : l;
+            ? h
+            : vulnerability.severity === "Medium"
+              ? m
+              : l;
       tableHtml += `
             <tr>
               <td><img src ="${imgsrc}" alt="${vulnerability.severity}" width="20" height="20"/></td>
@@ -250,7 +250,7 @@ const convertSnykTable = (jsonData) => {
   return tableHtml;
 };
 
-const getPartofLog = function (startMarker, endMarker, logOutput) {
+const getPartofLog = function(startMarker, endMarker, logOutput) {
   // Extract the desired part of the log output
   const lines = logOutput.split("\n");
   logOutput = lines
@@ -268,4 +268,4 @@ const getPartofLog = function (startMarker, endMarker, logOutput) {
   return logSection;
 };
 
-module.exports = { footer , checkStringContains, getCurrentUser, parseLogOutput }
+module.exports = { footer, checkStringContains, getCurrentUser, parseLogOutput }
