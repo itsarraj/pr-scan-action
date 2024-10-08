@@ -86,8 +86,9 @@ module.exports = (app) => {
               if (
                 // (step.conclusion === "failure" ||
                 //   step.conclusion === "skipped") &&
-                Utils.checkStringContains(step.name, "truffle") &&
-                step.conclusion === "success" && conclusion === "success"
+                Utils.checkStringContains(step.name, "truffle")
+                //   &&
+                // step.conclusion === "success" && conclusion === "success"
               ) {
                 // Retrieve the response of the failed step
                 const logResponse =
