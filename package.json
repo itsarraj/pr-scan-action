@@ -1,0 +1,49 @@
+{
+  "name": "pr-scan-action",
+  "version": "1.0.0",
+  "private": true,
+  "description": "GitHub Action for Secret and SCA scan on pull request",
+  "scripts": {
+    "test": "node test/app.test.ts",
+    "build": "rm -rf dist;ncc build index.ts -o dist"
+  },
+  "author": "Animesh Raj https://itsarraj.me)",
+  "license": "ISC",
+  "repository": "github:itsarraj/pr-scan-action",
+  "dependencies": {
+    "@octokit/rest": "^20.1.1",
+    "@probot/adapter-github-actions": "^3.1.1"
+  },
+  "devDependencies": {
+    "@babel/plugin-transform-class-properties": "^7.22.5",
+    "@semantic-release/git": "^10.0.1",
+    "@vercel/ncc": "^0.36.1",
+    "eslint": "^8.45.0",
+    "nock": "^13.3.2",
+    "semantic-release": "^21.0.7",
+    "typescript": "^5.1.6",
+    "uvu": "^0.5.6"
+  },
+  "release": {
+    "branches": [
+      "main"
+    ],
+    "plugins": [
+      "@semantic-release/commit-analyzer",
+      "@semantic-release/release-notes-generator",
+      [
+        "@semantic-release/git",
+        {
+          "assets": [
+            "dist/index.js"
+          ],
+          "message": "build(release): compiled action for ${nextRelease.version}\n\n[skip ci]"
+        }
+      ],
+      "@semantic-release/github"
+    ]
+  },
+  "jest": {
+    "testEnvironment": "node"
+  }
+}
