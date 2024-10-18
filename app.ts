@@ -7,7 +7,6 @@
 const { Octokit } = require("@octokit/rest");
 const OctoKitfetch = require("node-fetch");
 const Utils = require("./config/global-utils.ts")
-// const consoleTable = require('console.table');
 
 const octokit = new Octokit({
   auth: process.env.GITHUB_TOKEN, request: {
@@ -134,13 +133,11 @@ module.exports = (app) => {
       (truffleOutput === ""
         ? `<i>All good in the hood no uncovered secrets found in raised Pull-Request.</i>`
         : truffleOutput);
-        // : consoleTable.getTable(truffleOutput));
     let snykSecrets =
       "<h3>SCA Bot</h3> \n" +
       (snykOutput === ""
         ? `<i>All good in the hood no vulnerable package found in raised Pull-Request.</i>`
         : snykOutput);
-        // : consoleTable.getTable(snykOutput));
 
     const msg = context.issue({
       body:
