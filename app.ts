@@ -133,12 +133,12 @@ module.exports = (app) => {
       "<h3>Secrets Bot</h3>\n" +
       (truffleOutput === ""
         ? `<i>All good in the hood no uncovered secrets found in raised Pull-Request.</i>`
-        : consoleTable(truffleOutput));
+        : consoleTable.getTable(truffleOutput));
     let snykSecrets =
       "<h3>SCA Bot</h3> \n" +
       (snykOutput === ""
         ? `<i>All good in the hood no vulnerable package found in raised Pull-Request.</i>`
-        : consoleTable(snykOutput));
+        : consoleTable.getTable(snykOutput));
 
     const msg = context.issue({
       body:
