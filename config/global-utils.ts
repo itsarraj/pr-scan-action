@@ -268,4 +268,3 @@ const getPartofLog = function(startMarker, endMarker, logOutput) {
   return logSection;
 };
 
-export = { footer, checkStringContains, getCurrentUser, parseLogOutput }
