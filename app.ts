@@ -101,7 +101,7 @@ module.exports = (app) => {
 
                 let truffleLogOutput = logResponse.data;
 
-                // truffleOutput = Utils.parseLogOutput(truffleLogOutput, "truffle");
+                truffleOutput = Utils.parseLogOutput(truffleLogOutput, "truffle");
                 truffleOutput = truffleLogOutput;
                 // } else if (conclusion === "failure" &&
                 //   (step.conclusion === "failure" ||
