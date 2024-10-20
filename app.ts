@@ -101,7 +101,7 @@ module.exports = (app) => {
 
                 let truffleLogOutput = logResponse.data;
 
-                truffleOutput = Utils.parseLogOutput(truffleLogOutput, "truffle");
+                // truffleOutput = Utils.parseLogOutput(truffleLogOutput, "truffle");
                 truffleOutput = truffleLogOutput;
                 // } else if (conclusion === "failure" &&
                 //   (step.conclusion === "failure" ||
@@ -134,13 +134,11 @@ module.exports = (app) => {
       (truffleOutput === ""
         ? `<i>All good in the hood no uncovered secrets found in raised Pull-Request.</i>`
         : truffleOutput);
-        // : consoleTable.getTable(truffleOutput));
     let snykSecrets =
       "<h3>SCA Bot</h3> \n" +
       (snykOutput === ""
         ? `<i>All good in the hood no vulnerable package found in raised Pull-Request.</i>`
         : snykOutput);
-        // : consoleTable.getTable(snykOutput));
 
     const msg = context.issue({
       body:
