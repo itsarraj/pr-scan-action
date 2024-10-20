@@ -6,20 +6,20 @@ const m =
   "https://camo.githubusercontent.com/87ff89b4b8f94ce578fb7cf68651203196e42036bb7052c0e196850e22f8d2c9/68747470733a2f2f7265732e636c6f7564696e6172792e636f6d2f736e796b2f696d6167652f75706c6f61642f775f32302c685f32302f76313536313937373831392f69636f6e2f6d2e706e67";
 const l =
   "https://camo.githubusercontent.com/f2ab3e2f2bf334b038843bd4f736d6182625fc72809c7ad3c8504b54444f2128/68747470733a2f2f7265732e636c6f7564696e6172792e636f6d2f736e796b2f696d6167652f75706c6f61642f775f32302c685f32302f76313536313937373831392f69636f6e2f6c2e706e67";
-const footer = `\nPlease consider investigating the findings and remediating the incidents. Failure to do so may lead to compromising the associated services or software components.`;
+export const footer = `\nPlease consider investigating the findings and remediating the incidents. Failure to do so may lead to compromising the associated services or software components.`;
 
 
-const checkStringContains = (string, substring) => {
+export const checkStringContains = (string, substring) => {
   const regex = new RegExp(substring, "i");
   return regex.test(string);
 };
 
-const getCurrentUser = (context) => {
+export const getCurrentUser = (context) => {
   const pr = context.payload.pull_request;
   return pr.user.login;
 };
 
-const parseLogOutput = (logOutput, substring) => {
+export const parseLogOutput = (logOutput, substring) => {
   var startMarker = "",
     endMarker = "",
     comments = "";
@@ -268,4 +268,4 @@ const getPartofLog = function(startMarker, endMarker, logOutput) {
   return logSection;
 };
 
-module.exports = { footer, checkStringContains, getCurrentUser, parseLogOutput }
+export = { footer, checkStringContains, getCurrentUser, parseLogOutput }
