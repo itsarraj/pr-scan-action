@@ -4,10 +4,10 @@
 
 // import * as Octokit from "@octokit/rest";
 //import * as Utils from "./config/global-utils";
-const { Octokit } = require("@octokit/rest");
-const OctoKitfetch = require("node-fetch");
-const Utils = require("./config/global-utils.ts")
-const consoleTable = require('console.table');
+import { Octokit } from "@octokit/rest";
+import * as OctoKitfetch  "node-fetch"
+import * as Utils "./config/global-utils.ts"
+// const consoleTable = require('console.table');
 
 const octokit = new Octokit({
   auth: process.env.GITHUB_TOKEN, request: {
@@ -15,7 +15,7 @@ const octokit = new Octokit({
   },
 });
 
-module.exports = (app) => {
+export default (app) => {
   app.log("Yay! The app was loaded!");
 
   const workflowName = ["Snyk Bot scan", "TruffleHog Bot scan", "Bot scan"];
@@ -133,12 +133,12 @@ module.exports = (app) => {
       "<h3>Secrets Bot</h3>\n" +
       (truffleOutput === ""
         ? `<i>All good in the hood no uncovered secrets found in raised Pull-Request.</i>`
-        : consoleTable(truffleOutput));
+        : truffleOutput);
     let snykSecrets =
       "<h3>SCA Bot</h3> \n" +
       (snykOutput === ""
         ? `<i>All good in the hood no vulnerable package found in raised Pull-Request.</i>`
-        : consoleTable(snykOutput));
+        : snykOutput);
 
     const msg = context.issue({
       body:
