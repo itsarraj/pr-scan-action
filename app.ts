@@ -33,7 +33,7 @@ export default (app) => {
 
     const user = Utils.getCurrentUser(context);
     let truffleOutput = "",
-      snykOutput = "";
+    let  snykOutput = "";
 
     const { owner, repo } = context.repo();
 
@@ -149,5 +149,3 @@ export default (app) => {
     });
 
     return context.octokit.issues.createComment(msg);
-  });
-};
