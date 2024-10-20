@@ -49,7 +49,7 @@ module.exports = (app) => {
       .filter(
         (w) =>
           workflowName.includes(w.name) &&
-          w.conclusion === "failure" &&
+          // w.conclusion === "failure" &&
           w.event === "pull_request_target"
       );
     app.log(`workflowRuns: ${workflowRuns}`);
