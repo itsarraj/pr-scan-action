@@ -1,5 +1,5 @@
 name: PrScanAction
 description: "Built action for PR scan"
 runs:
-  using: "node16"
+  using: "node20"
   main: "dist/index.js"
