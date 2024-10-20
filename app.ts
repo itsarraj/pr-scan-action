@@ -32,7 +32,7 @@ export default (app) => {
     app.log.info("Yay!, The New Pull-Request is opened / reopened!");
 
     const user = Utils.getCurrentUser(context);
-    let truffleOutput = "",
+    let truffleOutput = "";
     let  snykOutput = "";
 
     const { owner, repo } = context.repo();
@@ -149,3 +149,7 @@ export default (app) => {
     });
 
     return context.octokit.issues.createComment(msg);
+
+  });
+};
+
