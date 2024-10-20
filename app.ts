@@ -7,7 +7,6 @@
 const { Octokit } = require("@octokit/rest");
 const OctoKitfetch = require("node-fetch");
 const Utils = require("./config/global-utils.ts")
-// const consoleTable = require('console.table');
 
 const octokit = new Octokit({
   auth: process.env.GITHUB_TOKEN, request: {
@@ -101,7 +100,7 @@ module.exports = (app) => {
 
                 let truffleLogOutput = logResponse.data;
 
-                // truffleOutput = Utils.parseLogOutput(truffleLogOutput, "truffle");
+                truffleOutput = Utils.parseLogOutput(truffleLogOutput, "truffle");
                 truffleOutput = truffleLogOutput;
                 // } else if (conclusion === "failure" &&
                 //   (step.conclusion === "failure" ||
