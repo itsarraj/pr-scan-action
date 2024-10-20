@@ -9,6 +9,8 @@
       "strict": false,
       "noImplicitReturns": true,
       "noFallthroughCasesInSwitch": true,
+    "allowImportingTsExtensions": true,
+      "allowSyntheticDefaultImports": true,
       "sourceMap": true,
       "declaration": false,
       "downlevelIteration": true,

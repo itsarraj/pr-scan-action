@@ -33,7 +33,7 @@ export default (app) => {
 
     const user = Utils.getCurrentUser(context);
     let truffleOutput = "";
-    let  snykOutput = "";
+    let snykOutput = "";
 
     const { owner, repo } = context.repo();
 
@@ -101,7 +101,7 @@ export default (app) => {
 
                 let truffleLogOutput = logResponse.data;
 
-                truffleOutput = Utils.parseLogOutput(truffleLogOutput, "truffle");
+                // truffleOutput = Utils.parseLogOutput(truffleLogOutput, "truffle");
                 truffleOutput = truffleLogOutput;
                 // } else if (conclusion === "failure" &&
                 //   (step.conclusion === "failure" ||
