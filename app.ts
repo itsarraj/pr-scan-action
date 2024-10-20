@@ -14,7 +14,7 @@ const octokit = new Octokit({
   },
 });
 
-module.exports = (app) => {
+export default (app) => {
   app.log("Yay! The app was loaded!");
 
   const workflowName = ["Snyk Bot scan", "TruffleHog Bot scan", "Bot scan"];
