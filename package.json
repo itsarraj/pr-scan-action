@@ -13,6 +13,7 @@
   "dependencies": {
     "@octokit/rest": "^21.0.2",
     "@probot/adapter-github-actions": "^4.0.0",
+    "console.table": "^0.10.0",
     "node-fetch": "^3.3.2"
   },
   "devDependencies": {
