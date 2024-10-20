@@ -5,8 +5,7 @@
 // import * as Octokit from "@octokit/rest";
 //import * as Utils from "./config/global-utils";
 const { Octokit } = require("@octokit/rest");
-// const OctoKitfetch = require("node-fetch");
-const OctoKitfetch = require("@octokit/request");
+const OctoKitfetch = require("node-fetch");
 const Utils = require("./config/global-utils.ts")
 
 const octokit = new Octokit({
