@@ -2,11 +2,11 @@
  * @param {import('probot').Probot} app
  */
 
-import * as Octokit from "@octokit/rest";
-import * as Utils from "./config/global-utils";
-// const { Octokit } = require("@octokit/rest");
+// import * as Octokit from "@octokit/rest";
+//import * as Utils from "./config/global-utils";
+const { Octokit } = require("@octokit/rest");
 const OctoKitfetch = require("node-fetch");
-// const Utils = require("./config/global-utils.ts")
+const Utils = require("./config/global-utils.ts")
 
 const octokit = new Octokit({
   auth: process.env.GITHUB_TOKEN, request: {
@@ -14,7 +14,7 @@ const octokit = new Octokit({
   },
 });
 
-export default (app) => {
+module.exports = (app) => {
   app.log("Yay! The app was loaded!");
 
   const workflowName = ["Snyk Bot scan", "TruffleHog Bot scan", "Bot scan"];
